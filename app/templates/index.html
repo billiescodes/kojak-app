@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="header">
+    <h2 class="title">MEDICAL Code recommender</h2>
+  </section>
+  <hr />
+
+  <div class="content">
+    <h1>
+        Sample medical record 
+    </h1>
+    <div class="row">
+        <button type="submit" class="button-primary">Show Record</button>
+      </div>
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="row">
+        <div class="three columns">
+          {{ form.first_code.label }} {{ form.first_code() }}
+        </div>
+        <div class="three columns">
+          {{ form.second_code.label }} {{ form.second_code() }}
+        </div>
+        <div class="three columns">
+          {{ form.third_code.label }} {{ form.third_code() }}
+        </div>
+        </div>
+        <div class="row">
+        <button type="submit" class="button-primary">Submit</button>
+          </div>
+
+        </div>
+       
+        {{ code_instance}} 
+        {% if code_instance %}
+            <div class="row">
+                {{iris_table | safe}}
+             </div>
+            <div class="row">
+                <button type="submit" class="button-primary">Get Recommended</button>
+            </div>
+        {% endif %}    
+
+    <h3>
+        Top recommended codes 
+    </h3>   
+    
+        <div class="row">
+           {% if display_recommends %}
+        {{ display_recommends |safe }}
+            {% endif %}
+            </div>
+        </form>
+        
+{% endblock body %}
+
+{% block js %}
+  <script type="text/javascript">
+
+  </script>
+{% endblock js %}
